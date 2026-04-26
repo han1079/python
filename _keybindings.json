@@ -1,0 +1,13 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+      "key": "ctrl+j",
+      "command": "notebook.focusNextEditor",
+      "when": "notebookEditorFocused"
+    },
+    {
+      "key": "ctrl+k",
+      "command": "notebook.focusPreviousEditor",
+      "when": "notebookEditorFocused"
+    }
+]
