@@ -32,7 +32,7 @@
         {
         "before": ["leader", "b", "l"],
         "commands": ["workbench.action.nextEditor"]
-        },
+        }
     ],
     "vim.useSystemClipboard": true,
     "vim.normalModeKeyBindings": [
@@ -76,5 +76,5 @@
                 }
             ]
         }
-    ],
+    ]
 }
