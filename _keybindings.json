@@ -3,22 +3,22 @@
     {
       "key": "space j",
       "command": "notebook.focusNextEditor",
-      "when": "notebookEditorFocused"
+      "when": "notebookEditorFocused && vim.mode == 'Normal'"
     },
     {
       "key": "space k",
       "command": "notebook.focusPreviousEditor",
-      "when": "notebookEditorFocused"
+      "when": "notebookEditorFocused && vim.mode == 'Normal'"
     },
     {
         "key": "space b h",
         "command": "workbench.action.previousEditor",
-        "when": "notebookEditorFocused"
+        "when": "notebookEditorFocused && vim.mode == 'Normal'"
     },
     {
         "key": "space b l",
         "command": "workbench.action.nextEditor",
-        "when": "notebookEditorFocused"
+        "when": "notebookEditorFocused && vim.mode == 'Normal'"
     },
     {
         "key": "ctrl+h",
