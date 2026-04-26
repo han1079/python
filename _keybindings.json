@@ -1,13 +1,30 @@
 // Place your key bindings in this file to override the defaults
 [
     {
-      "key": "ctrl+j",
+      "key": "<space> j",
       "command": "notebook.focusNextEditor",
       "when": "notebookEditorFocused"
     },
     {
-      "key": "ctrl+k",
+      "key": "<space> k",
       "command": "notebook.focusPreviousEditor",
       "when": "notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusLeftGroup"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.focusRightGroup"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.focusAboveGroup"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.focusBelowGroup"
     }
 ]
+

@@ -1,0 +1,80 @@
+{
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "remote.SSH.remotePlatform": {
+        "10.0.70.214": "linux"
+    },
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+        "before": ["leader", "f", "f"],
+        "commands": ["workbench.action.quickOpen"]
+        },
+        {
+        "before": ["leader", "f", "b"],
+        "commands": ["workbench.action.showAllEditorsByMostRecentlyUsed"]
+        },
+        {
+        "before": ["leader", "s", "v"],
+        "commands": ["workbench.action.splitEditor"]
+        },
+        {
+        "before": ["leader", "s", "h"],
+        "commands": ["workbench.action.splitEditorDown"]
+        },
+        {
+        "before": ["g", "h"],
+        "commands": ["editor.action.revealDefinitions"]
+        },
+        {
+        "before": ["leader", "b", "h"],
+        "commands": ["workbench.action.previousEditor"]
+        },
+        {
+        "before": ["leader", "b", "l"],
+        "commands": ["workbench.action.nextEditor"]
+        },
+    ],
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "-"
+            ],
+            "commands": [
+                {
+                    "command": "oil-code.open"
+                }
+            ]
+        },
+        {
+            "before": [
+                "<cr>"
+            ],
+            "commands": [
+                {
+                    "command": "oil-code.select"
+                }
+            ]
+        },
+        {
+            "before": [
+                "<c-l>"
+            ],
+            "commands": [
+                {
+                    "command": "oil-code.refresh"
+                }
+            ]
+        },
+        {
+            "before": [
+                "`"
+            ],
+            "commands": [
+                {
+                    "command": "oil-code.cd"
+                }
+            ]
+        }
+    ],
+}
