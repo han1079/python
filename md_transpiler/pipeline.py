@@ -42,40 +42,37 @@ def create_full_html(content_html, title="Document"):
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>{title}</title>
       <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  href="https://cdn.jsdelivr.net/npm/katex@0.18.4/dist/katex.min.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=CMU+Serif&1&display=swap" rel="stylesheet">
       <style>
           body {{
               font-family: 'Lora', 'Latin Modern Roman', 'Times New Roman', serif;
               max-width: 8.5in;
               margin: 1in auto;
               padding: 0;
-              line-height: 1.5;
+              line-height: 1.1;
               color: #333;
               text-align: justify;
-              font-size: 12pt;
+              font-size: 1.1em;
           }}
           h1, h2, h3, h4, h5, h6 {{
               font-weight: bold;
               margin-top: 1.5em;
-              margin-bottom: 0.5em;
+              margin-bottom: 0.4em;
               text-align: left;
           }}
           h1 {{ font-size: 1.5em; }}
           h2 {{ font-size: 1.3em; }}
           h3 {{ font-size: 1.1em; }}
           p {{
-              margin-bottom: 0.5em;
+              line-height: 1.1;
               margin-top: 0;
-              text-indent: 1.5em;
-          }}
-          p:first-child {{
-              text-indent: 0;
           }}
           .katex {{
               font-size: 1em;
+              line-height: 1.1;
           }}
           .math-block {{
               display: block;

@@ -21,6 +21,35 @@ def render_with_katex(latex_str, display_mode=False):
         return f"<span class='error'>LaTeX rendering failed</span>"
     return result.stdout.strip()
 
+def render_with_katex_batch(requests):
+    """
+    requests: list of {'latex': str, 'displayMode': bool}
+    Returns rendered HTML strings in the same order, via a single Node process.
+    """
+    cmd = '''
+    const katex = require('katex');
+    let input = '';
+    process.stdin.on('data', d => input += d);
+    process.stdin.on('end', () => {
+        const requests = JSON.parse(input);
+        const results = requests.map(r => {
+            try {
+                return katex.renderToString(r.latex, { displayMode: r.displayMode });
+            } catch (e) {
+                return "<span class='error'>LaTeX rendering failed</span>";
+            }
+        });
+        console.log(JSON.stringify(results));
+    });
+    '''
+    result = subprocess.run(['node', '-e', cmd], input=json.dumps(requests),
+                            capture_output=True, text=True)
+
+    if result.returncode != 0:
+        print(result.stderr)
+        return [f"<span class='error'>LaTeX rendering failed</span>" for _ in requests]
+    return json.loads(result.stdout)
+
 @dataclasses.dataclass
 class SemanticToken:
     tokens: list[InlineToken] = field(default_factory=list)

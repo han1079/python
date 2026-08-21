@@ -205,9 +205,11 @@ def _make_inline_tokens(block):
     raw = block.raw_block
     idx = 0
     while idx < len(raw):
-        if raw[idx] in PUNCTUATIONS:
-            if not isinstance(block, HeaderToken):
-                block.inner_tokens.append(PUNCT(raw[idx]))
+        if raw[idx] == '#' and isinstance(block, HeaderToken):
+            idx += 1
+            continue
+        else:
+            block.inner_tokens.append(PUNCT(raw[idx]))
             idx += 1
             continue
          
