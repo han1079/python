@@ -3,20 +3,16 @@ numpy
 scipy
 pygame
 matplotlib
-ipython
 pandas
-ipython[notebook]
 jupyterlab
-ipykernel
+#ipywidgets
 
 pybind11
 packaging
 Mako
-pygobject==3.50.0
 pycairo
-PyGObject
 jsonschema
-PyQt5
+PyQt6
 
 
 construct>=2.9

@@ -10,6 +10,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 pip install --upgrade -r requirements.txt
 
+pip install -e Notebooks
 cat > "$VENV_NAME/bin/incgrph" << EOF
 #!/bin/bash
 python3 "$PWD/tools/cincludegraph/incgrph.py" "\$@"
