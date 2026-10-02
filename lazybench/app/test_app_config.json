@@ -1,0 +1,86 @@
+{
+    "root": {
+        "node_class": "core.node.RootNode",
+        "factory": null,
+        "resources": null,
+        "install": {
+            "by_factory": "util.make_db_browser",
+            "by_config": {
+                "connector_router": {
+                    "node_class": "core.facade.FacadeNode",
+                    "factory": "app.hardware.connector_router.ConnectorRouter",
+                    "resources": ["ipc_node"],
+                    "kwargs": {"expose": ["refresh_catalog", "start", "stop"]},
+                    "install": {"by_factory": null, "by_config": null}
+                },
+                "hardware_scanner": {
+                    "node_class": "core.facade.FacadeNode",
+                    "factory": "app.hardware.scanner.HardwareScanner",
+                    "resources": ["ipc_node"],
+                    "kwargs": {"expose": [
+                        "scan_usb", "scan_ip", "query", "config_rw", "history_rw",
+                        "usb_serial_present", "ping_single_ip"
+                    ]},
+                    "install": {"by_factory": null, "by_config": null}
+                },
+                "ipc_node": {
+                    "node_class": "core.facade.FacadeNode",
+                    "factory": "util.default_ipc_factory",
+                    "resources": null,
+                    "install": {"by_factory": null, "by_config": null}
+                },
+                "instruments": {
+                    "node_class": "core.node.Registry",
+                    "factory": null,
+                    "resources": ["connector_router", "hardware_scanner", "ipc_node"],
+                    "install": {"by_factory": null, "by_config": null}
+                },
+                "session_logger": {
+                    "node_class": "core.facade.FacadeNode",
+                    "factory": "app.session_logger.SessionLogger",
+                    "resources": ["connector_router", "hardware_scanner"],
+                    "kwargs": {"expose": [
+                        "previous_session_entries", "instrument_entry_table",
+                        "session_id", "stop", "record_tree_if_changed"
+                    ]},
+                    "install": {
+                        "by_factory": "app.hardware.scripts.bootstrap_from_previous_session",
+                        "by_config": null
+                    }
+                },
+                "console_logger":{
+                    "node_class": "core.facade.FacadeNode",
+                    "factory": "app.session_logger.ConsoleLogger",
+                    "install": {
+                        "by_factory": null,
+                        "by_config": null
+                    }
+                },
+                "scheduler": {
+                    "node_class": "tasks.scheduler.Scheduler",
+                    "factory": null,
+                    "resources": null,
+                    "install": {
+                        "by_factory": null,
+                        "by_config": {
+                            "instrument_scanner": {
+                                "node_class": "tasks.scheduler.TaskNode",
+                                "factory": "app.hardware.scripts.scan_network_and_sync_catalog",
+                                "resources": ["connector_router", "hardware_scanner", "session_logger"],
+                                "install": {"by_factory": null, "by_config": null},
+                                "kwargs": {"period": 1.0, "default_activate": true}
+                            },
+                            "dag_tree_logger": {
+                                "node_class": "tasks.scheduler.TaskNode",
+                                "factory": "app.session_logger.log_tree_if_changed",
+                                "resources": ["session_logger"],
+                                "install": {"by_factory": null, "by_config": null},
+                                "kwargs": {"period": 5.0, "default_activate": true}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

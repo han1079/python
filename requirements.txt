@@ -5,7 +5,9 @@ pygame
 matplotlib
 pandas
 jupyterlab
+pytest
 #ipywidgets
+InquirerPy
 
 pybind11
 packaging
@@ -20,3 +22,12 @@ requests
 websocket-client
 
 flask
+
+prompt_toolkit
+sqlalchemy
+coloredlogs
+pyvisa
+pyusb
+PyYAML
+Pygments
+ipython

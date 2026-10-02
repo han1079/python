@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lazybench"
+version = "0.1.0"
+dependencies = [
+    "InquirerPy",
+    "prompt_toolkit",
+    "sqlalchemy",
+    "coloredlogs",
+    "pyvisa",
+    "pyusb",
+    "PyYAML",
+    "Pygments",
+    "ipython",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["."]
